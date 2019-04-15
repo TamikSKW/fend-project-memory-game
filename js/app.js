@@ -93,7 +93,42 @@ function shuffle(array) {
      }
   }
 
+    /**
+  * Restart function, stores and uses the shuffle function to rearrange the cards
+  * takes in the element of the deck
+  */
+ function restartDeck(deck) 
+ {
+   debugger;
+    //prepping the export
+    let new_deck = deck.cloneNode(false);
+
+    // array is not being reshuffled
+    let lis = document.querySelectorAll("LI.card");
+    let lshuf = [];
+
+    for (let x = 0; x < lis.length; x++)
+    {
+      lshuf.push(lis[x]);
+    }
+
+
+    //shuffle the array
+    lis = shuffle(lshuf);
+
+    //add each element to our new deck
+    for (let i in lis) 
+    {
+      new_deck.appendChild(i);
+    }
+    //replace the old with the new
+    deck.parentNode.replaceChild(new_deck, deck);
+  }
+
   Array.from(card).forEach(function(element)
   {
     element.addEventListener('click', flip);
   });
+
+  let ul_Deck = document.querySelector('.deck');
+ document.querySelector('.restart').addEventListener('click', restartDeck(ul_Deck));
