@@ -47,6 +47,10 @@ Array.from(cardList).forEach(function(element){
     element.addEventListener('click', onClick)
 });
 
+document.querySelector('.restart').addEventListener('click', function(){
+    boardShuffle()
+});
+
 /**Functions */
 
 //main functionality function
@@ -56,6 +60,8 @@ function onClick(trigger){
     //this check is supposed to prevent selecting more than two cards
     if (pushCard(card)){
         toggleDisplay(card);
+        //Move counter should only be incremented when a card is clicked
+        moveCount();
     }
 
     //if openCardList.length > 1
@@ -71,9 +77,10 @@ function onClick(trigger){
                 cardNoMatch(openCardList);
             }, 750); //pause is set to 750 miliseconds here
         }
+        
     }
 
-    moveCount();
+    
     gameOver();
 }
 
@@ -147,18 +154,28 @@ function gameOver(){
 
 //Shuffles our array of cards and updates the document
 function boardShuffle() {
-    shuffle(cardList);
-    debugger;
+    //make a simple array of the card values (the symbols)
+    let sCards = [];
+    cardList.forEach(function(card){
+        sCards.push(card.firstElementChild.classList[1]);
+    })
+    sCards = shuffle(sCards);
 
     //get a current list of all the elements on the page
     let dCardList = document.querySelectorAll('li.card');
 
+    //takes each element and changes the class to the value in the shuffled list
     for ( let i = 0; i < cardList.length; i++){
         let oldClass = dCardList[i].firstElementChild.classList[1];
-        let newClass = cardList[i].firstElementChild.classList[1];
+        let newClass = sCards[i];
         dCardList[i].firstElementChild.classList.remove(oldClass);
         dCardList[i].firstElementChild.classList.add(newClass);
     }
 
+    //make sure our list matches the new one
     cardList = document.querySelectorAll('li.card');
+    
+    //reset the move counter
+    moves = -1;
+    moveCount();
 }
