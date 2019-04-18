@@ -17,17 +17,27 @@ For specific, detailed instructions, look at the project instructions in the [Ud
 
 ## Issues
 
-- Deck shuffling function does not work
-- More than two cards can be selected, it messes with the comparison operation
+None at the moment
 
 ## Progress
 
-- [ ] Shuffle
+### Initial Functionality - Completed!
+- [x] Shuffle
 - [x] Match Logic
-- [ ] Score (half working)
+- [x] Score
 - [x] Card Flipping
-- [ ] (Optional Animation)
 
+### Rubric Requirements
+- [x] Memory Logic
+- [ ] Congratulations Pop-up
+- [x] Star Rating
+- [ ] Timer
+- [x] Move Counter
+
+### Optional features
+- [ ] Optional Animation
+- [ ] Leader Board
+- [ ] Keyboard Shortcuts
 
 ## Contributing
 
