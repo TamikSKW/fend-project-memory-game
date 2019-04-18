@@ -62,13 +62,15 @@ function onClick(trigger){
     //if openCardList.length > 1
     if (openCardList.length == 2)
     {
+        //this checks the value stored in the card, yes the path ends up being long
         if (openCardList[0].firstElementChild.classList[1] == openCardList[1].firstElementChild.classList[1]){
             cardMatch(openCardList);
         }
         else {
-            setTimeout(function(){
+            //if there is no match, then run that after a short pause
+            setTimeout(function(){  //have to pass our real function call through an anonymous one
                 cardNoMatch(openCardList);
-            }, 750);
+            }, 750); //pause is set to 750 miliseconds here
         }
     }
 
@@ -78,11 +80,13 @@ function onClick(trigger){
 
 // display the card's symbol
 function toggleDisplay(card){
+    //using toggle so we can call this whenever we have to flip a card
     card.classList.toggle('open');
     card.classList.toggle('show');
 }
 
 // add the card to a *list* of "open" cards 
+// returns TRUE if a card was added, otherwise FALSE
 function pushCard(card){
     // we only want to add the card if there is only one other card selected
     if (openCardList.length < 2){
@@ -95,9 +99,11 @@ function pushCard(card){
 
 // if the cards do match, lock the cards in the open position    
 function cardMatch(cards){
+    //switch the cards to the matching style
     cards.forEach(function(card){
         card.classList.add('match');
     })
+    //loop through the list and remove each value
     for ( let i = cards.length; i > 0; i--){
         cards.pop();
     }
@@ -110,6 +116,7 @@ function cardNoMatch(cards){
     cards.forEach(function(card){
         toggleDisplay(card);
     })
+    //loop through the list and remove each value
     for ( let i = cards.length; i > 0; i--){
         cards.pop();
     }
@@ -118,8 +125,9 @@ function cardNoMatch(cards){
 //Increment move counter
 function moveCount(){
     moves += 1;
+    //get the element storing the move value from document
     let el = document.querySelector('.moves');
-    el.innerText = moves;
+    el.innerText = moves; //and update it
 }
 
 //Checks to see if the game is over
@@ -137,41 +145,3 @@ function gameOver(){
         console.log('You win!');
     }
 }
-
-
-
-
-/**function onClick(card)
-1. call toggleDisplay(card)
-2. call addCard
-3. Compare if the list already has another card, check to see if the two cards match
-    1. if match
-        1. call cardMatch
-    2. if no match
-        1. call cardNoMatch
-    3. call moveCount
-    4. if all matched
-        call gameOver
-
-// display the card's symbol
-function toggleDisplay(card)
-    change css to show the card
-    card.
-    classList = card open show
-
-// add the card to a *list* of "open" cards 
-function addCard
-    add thisCard to openCardList
-
-
-
-// increment the move counter and display it on the page
-function moveCount
-    moves + 1
-    moveElement text = moves
-
-
-// if all cards have matched, display a message with the final score 
-function gameOver
-    Display screen (lots of changes?  Notification?)
- */
