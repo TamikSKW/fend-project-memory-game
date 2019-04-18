@@ -210,4 +210,9 @@ function boardShuffle() {
     //reset the move counter
     moves = -1;
     moveCount();
+
+    dCardList.forEach(function(element){
+        element.classList.remove('show');
+        element.classList.remove('open');
+    });
 }
