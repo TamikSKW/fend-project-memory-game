@@ -51,7 +51,6 @@ Array.from(cardList).forEach(function(element){
 
 //main functionality function
 function onClick(trigger){
-    debugger;
     let card = trigger.currentTarget;
 
     //this check is supposed to prevent selecting more than two cards
@@ -144,4 +143,22 @@ function gameOver(){
         //display win
         console.log('You win!');
     }
+}
+
+//Shuffles our array of cards and updates the document
+function boardShuffle() {
+    shuffle(cardList);
+    debugger;
+
+    //get a current list of all the elements on the page
+    let dCardList = document.querySelectorAll('li.card');
+
+    for ( let i = 0; i < cardList.length; i++){
+        let oldClass = dCardList[i].firstElementChild.classList[1];
+        let newClass = cardList[i].firstElementChild.classList[1];
+        dCardList[i].firstElementChild.classList.remove(oldClass);
+        dCardList[i].firstElementChild.classList.add(newClass);
+    }
+
+    cardList = document.querySelectorAll('li.card');
 }
