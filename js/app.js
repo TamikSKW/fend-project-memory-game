@@ -180,7 +180,7 @@ function gameOver(){
 
     if (allMatch){
         //display win
-        console.log('You win!');
+        alert(`You won after ${moves} moves!`);
     }
 }
 
