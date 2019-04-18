@@ -41,6 +41,9 @@ let cardList = document.querySelectorAll('li.card');
 let openCardList = [];
 let moves = 0; //move counter
 
+//Running boardShuffle so that the page does proper initalizing
+boardShuffle();
+
 /**Event Listeners */
 
 Array.from(cardList).forEach(function(element){
@@ -95,7 +98,7 @@ function toggleDisplay(card){
 // returns TRUE if a card was added, otherwise FALSE
 function pushCard(card){
     // we only want to add the card if there is only one other card selected
-    if (openCardList.length < 2){
+    if (openCardList.length < 2 && card !== openCardList[0]){
         openCardList.push(card);
         return true;    
     }
@@ -134,6 +137,34 @@ function moveCount(){
     //get the element storing the move value from document
     let el = document.querySelector('.moves');
     el.innerText = moves; //and update it
+
+    //rating logic
+    let stars = document.querySelector('.stars');
+    if (moves < 25){
+        //3 stars
+        stars.children[0].style.color = 'yellow';
+        stars.children[1].style.color = 'yellow';
+        stars.children[2].style.color = 'yellow';
+    }
+    else if (moves < 35){
+        //2 stars
+        stars.children[0].style.color = 'yellow';
+        stars.children[1].style.color = 'yellow';
+        stars.children[2].style.color = 'black';
+    }
+    else if (moves < 40){
+        //1 star
+        stars.children[0].style.color = 'yellow';
+        stars.children[1].style.color = 'black';
+        stars.children[2].style.color = 'black';
+    }
+    else{
+        //no stars
+        stars.children[0].style.color = 'black';
+        stars.children[1].style.color = 'black';
+        stars.children[2].style.color = 'black';
+        
+    }
 }
 
 //Checks to see if the game is over
