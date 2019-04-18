@@ -63,23 +63,22 @@ function onClick(trigger){
     //this check is supposed to prevent selecting more than two cards
     if (pushCard(card)){
         toggleDisplay(card);
-        
-    }
 
-    //if openCardList.length > 1
-    if (openCardList.length == 2)
-    {
-        //Move counter should only be incremented when a cards are compared
-        moveCount();
-        //this checks the value stored in the card, yes the path ends up being long
-        if (openCardList[0].firstElementChild.classList[1] == openCardList[1].firstElementChild.classList[1]){
-            cardMatch(openCardList);
-        }
-        else {
-            //if there is no match, then run that after a short pause
-            setTimeout(function(){  //have to pass our real function call through an anonymous one
-                cardNoMatch(openCardList);
-            }, 750); //pause is set to 750 miliseconds here
+        //if openCardList.length > 1
+        if (openCardList.length == 2)
+        {
+            //Move counter should only be incremented when a cards are compared
+            moveCount();
+            //this checks the value stored in the card, yes the path ends up being long
+            if (openCardList[0].firstElementChild.classList[1] == openCardList[1].firstElementChild.classList[1]){
+                cardMatch(openCardList);
+            }
+            else {
+                //if there is no match, then run that after a short pause
+                setTimeout(function(){  //have to pass our real function call through an anonymous one
+                    cardNoMatch(openCardList);
+                }, 750); //pause is set to 750 miliseconds here
+            }
         }
         
     }
