@@ -63,13 +63,14 @@ function onClick(trigger){
     //this check is supposed to prevent selecting more than two cards
     if (pushCard(card)){
         toggleDisplay(card);
-        //Move counter should only be incremented when a card is clicked
-        moveCount();
+        
     }
 
     //if openCardList.length > 1
     if (openCardList.length == 2)
     {
+        //Move counter should only be incremented when a cards are compared
+        moveCount();
         //this checks the value stored in the card, yes the path ends up being long
         if (openCardList[0].firstElementChild.classList[1] == openCardList[1].firstElementChild.classList[1]){
             cardMatch(openCardList);
@@ -140,21 +141,21 @@ function moveCount(){
 
     //rating logic
     let stars = document.querySelector('.stars');
-    if (moves < 25){
+    if (moves < 12){
         //3 stars
-        stars.children[0].style.color = 'yellow';
-        stars.children[1].style.color = 'yellow';
-        stars.children[2].style.color = 'yellow';
+        stars.children[0].style.color = 'gold';
+        stars.children[1].style.color = 'gold';
+        stars.children[2].style.color = 'gold';
     }
-    else if (moves < 35){
+    else if (moves < 16){
         //2 stars
-        stars.children[0].style.color = 'yellow';
-        stars.children[1].style.color = 'yellow';
+        stars.children[0].style.color = 'gold';
+        stars.children[1].style.color = 'gold';
         stars.children[2].style.color = 'black';
     }
-    else if (moves < 40){
+    else if (moves < 20){
         //1 star
-        stars.children[0].style.color = 'yellow';
+        stars.children[0].style.color = 'gold';
         stars.children[1].style.color = 'black';
         stars.children[2].style.color = 'black';
     }
