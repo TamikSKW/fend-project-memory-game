@@ -24,7 +24,7 @@ For specific, detailed instructions, look at the project instructions in the [Ud
 
 - [ ] Shuffle
 - [x] Match Logic
-- [ ] Score
+- [ ] Score (half working)
 - [x] Card Flipping
 - [ ] (Optional Animation)
 
