@@ -179,7 +179,9 @@ function gameOver(){
 
     if (allMatch){
         //display win
-        alert(`You won after ${moves} moves!`);
+        setTimeout(function(){
+            alert(`You won after ${moves} moves!`);
+        }, 250);
     }
 }
 
