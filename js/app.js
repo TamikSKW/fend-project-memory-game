@@ -41,8 +41,6 @@ let cardList = document.querySelectorAll('li.card');
 let openCardList = [];
 let moves = 0; //move counter
 
-//Running boardShuffle so that the page does proper initalizing
-boardShuffle();
 
 /**Event Listeners */
 
@@ -53,6 +51,10 @@ Array.from(cardList).forEach(function(element){
 document.querySelector('.restart').addEventListener('click', function(){
     boardShuffle()
 });
+
+//Running boardShuffle so that the page does proper initalizing
+boardShuffle();
+
 
 /**Functions */
 
@@ -140,7 +142,7 @@ function moveCount(){
 
     //rating logic
     let stars = document.querySelector('.stars');
-    if (moves < 12){
+    if (moves < 13){
         //3 stars
         stars.children[0].style.color = 'gold';
         stars.children[1].style.color = 'gold';
@@ -187,8 +189,16 @@ function gameOver(){
 
 //Shuffles our array of cards and updates the document
 function boardShuffle() {
+    //hide all the cards
+    cardList.forEach(function(element){
+        element.classList.remove('show');
+        element.classList.remove('open');
+        element.classList.remove('match');
+    })
+
     //make a simple array of the card values (the symbols)
     let sCards = [];
+    
     cardList.forEach(function(card){
         sCards.push(card.firstElementChild.classList[1]);
     })
@@ -211,9 +221,4 @@ function boardShuffle() {
     //reset the move counter
     moves = -1;
     moveCount();
-
-    dCardList.forEach(function(element){
-        element.classList.remove('show');
-        element.classList.remove('open');
-    });
 }
